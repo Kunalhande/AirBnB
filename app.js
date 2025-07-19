@@ -15,12 +15,13 @@ async function main() {
     await mongoose.connect(MONGO_URL);
 }
 
-app.get("testListing", async(req,res) =>{
+app.get("/testListing", async(req,res) =>{
      let sampleListing = new Listing ( {
         title: "my new villa",
         description:"its good",
         price: 1200,
         location: "Akole, maharashtra",
+        contry: "India",
      });
 
      await sampleListing.save();

@@ -8,6 +8,7 @@ const listingSchema = new Schema({
     },
     description: String,
     image:{
+        default:"https://unsplash.com/photos/the-andromeda-galaxy-shines-brightly-among-stars-cEn8-KuGLiIdefault link",
         type:String,
         set: (v) => v === "" ? "https://unsplash.com/photos/the-andromeda-galaxy-shines-brightly-among-stars-cEn8-KuGLiIdefault link" : v,
     },
