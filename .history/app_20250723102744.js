@@ -41,9 +41,10 @@ app.get("/", (req,res) =>{
 });
 
 app.get("/listings",async (req,res) => {
-    const allListings = await listings.find({});
-    res.render("listings/index", {allListings})
-    });
+    const listing = await listings.find({});
+    })
+
+})
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");

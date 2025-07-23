@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const listings = require("./models/listing")
+const Listing = require("./models/listing")
 const path = require("path");
+const Listing = require("./models/listing")
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -40,10 +41,12 @@ app.get("/", (req,res) =>{
     res.send("Hi, I am root");
 });
 
-app.get("/listings",async (req,res) => {
-    const allListings = await listings.find({});
-    res.render("listings/index", {allListings})
-    });
+app.get("/listings", (req,res) => {
+    listings.find({}).then((res) =>{
+        console.log(res);
+    })
+
+})
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");

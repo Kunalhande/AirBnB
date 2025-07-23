@@ -41,8 +41,8 @@ app.get("/", (req,res) =>{
 });
 
 app.get("/listings",async (req,res) => {
-    const allListings = await listings.find({});
-    res.render("listings/index", {allListings})
+    const allListing = await listings.find({});
+    res.render("/listings/index.ejs", {allListings})
     });
 
 app.listen(8080, () => {

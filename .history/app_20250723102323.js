@@ -40,10 +40,12 @@ app.get("/", (req,res) =>{
     res.send("Hi, I am root");
 });
 
-app.get("/listings",async (req,res) => {
-    const allListings = await listings.find({});
-    res.render("listings/index", {allListings})
-    });
+app.get("/listings", (req,res) => {
+    listings.find({}).then((res) =>{
+        console.log(res);
+    })
+
+})
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");

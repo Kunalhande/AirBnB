@@ -42,7 +42,7 @@ app.get("/", (req,res) =>{
 
 app.get("/listings",async (req,res) => {
     const allListings = await listings.find({});
-    res.render("listings/index", {allListings})
+    res.render("/index.ejs", {allListings})
     });
 
 app.listen(8080, () => {
