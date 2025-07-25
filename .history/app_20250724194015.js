@@ -44,16 +44,16 @@ app.get("/", (req,res) =>{
 
 //Index Route
 app.get("/listings",async (req,res) => {
-    const allListings = await Listing.find({});
+    const allListings = await listings.find({});
     res.render("listings/index", {allListings})
     });
 
 //Show Route
 app.get("/listings/:id",async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await listings.findById(id);
     res.render("listings/show",{listing});
-});    
+})    
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
