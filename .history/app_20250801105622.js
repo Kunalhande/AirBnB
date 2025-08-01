@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing")
 const path = require("path");
 const method = require("method-override");
-const ejsMate = require("ejs-mate");
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -35,13 +34,10 @@ async function main() {
 //      res.send("successful testing");
 // });
 
-app.engine('ejs' ,ejsMate);
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));  //to parse all data comes in request
 app.use(method("_method"));
-app.use(express.static(path.join(__dirname,"/public")));
-
 
 app.get("/", (req,res) =>{
     res.send("Hi, I am root");
@@ -87,15 +83,6 @@ app.put("/listings/:id", async(req,res) =>{
     await Listing.findByIdAndUpdate(id, {...req.body.listing});
     res.redirect(`/listings/${id}`);
 });
-
-//Delete Route
-app.delete("/listings/:id", async(req,res) =>{
-    let {id} =req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-})
-
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");

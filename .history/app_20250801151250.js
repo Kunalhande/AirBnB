@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing")
 const path = require("path");
 const method = require("method-override");
-const ejsMate = require("ejs-mate");
+const ejsMate = require("ejsMate");
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -40,7 +40,6 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));  //to parse all data comes in request
 app.use(method("_method"));
-app.use(express.static(path.join(__dirname,"/public")));
 
 
 app.get("/", (req,res) =>{
@@ -96,7 +95,7 @@ app.delete("/listings/:id", async(req,res) =>{
     res.redirect("/listings");
 })
 
-
+s
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
 });

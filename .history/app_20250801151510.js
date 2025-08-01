@@ -40,7 +40,6 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));  //to parse all data comes in request
 app.use(method("_method"));
-app.use(express.static(path.join(__dirname,"/public")));
 
 
 app.get("/", (req,res) =>{
@@ -96,7 +95,7 @@ app.delete("/listings/:id", async(req,res) =>{
     res.redirect("/listings");
 })
 
-
+s
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
 });
