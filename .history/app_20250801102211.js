@@ -37,7 +37,7 @@ async function main() {
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));  //to parse all data comes in request
-app.use(method("_method"));
+app.use(methodOverride("._method"));
 
 app.get("/", (req,res) =>{
     res.send("Hi, I am root");
@@ -79,10 +79,10 @@ app.get("/listings/:id/edit", async(req,res)=>{
 
 //Update
 app.put("/listings/:id", async(req,res) =>{
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing});
-    res.redirect(`/listings/${id}`);
-});
+    let (id) = req.params;
+    await listing.findByIdAndUpdate(id, {...req.body.listing});
+    res.redirect("/listings");
+})
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
