@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Listing</title>
+</head>
+<body>
+    <h1>Create a New Listing</h1>
+
+    <form action="/listings" method="POST">
+        <div>
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" placeholder="Enter Title" type="text" class="form-control">
+        </div>
+        
+        <div>
+            <label for="title" class="form-label">Description</label>
+            <textarea name="listing[description]" placeholder="Enter Description" class="form-control"></textarea>
+        </div>
+        
+        <div>
+             <label for="title" class="form-label">image URL</label>
+             <input name="listing[image]" placeholder="Enter image URL" type="text">
+        </div>
+        
+        <div>
+            <label for="title" class="form-label">price</label>
+            <input name="listing[price]" placeholder="Enter Price" type="number">
+        </div>
+        
+        <div>
+             <label for="title" class="form-label">country name</label>
+             <input name="listing[country]" placeholder="Enter Country Name" type="text">
+        </div>
+       
+        <div>
+            <label for="title" class="form-label">location</label>
+            <input name="listing[location]" placeholder="Enter location" type="text">
+        </div>
+
+        <button type="submit" class="btn btn-dark">Add</button>
+    </form>
+</body>
+</html>
