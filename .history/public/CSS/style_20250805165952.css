@@ -55,7 +55,7 @@ body {
 
 /*listing page*/
 .card {
-    border: none !important;
+    border: none;
     border-radius: 1rem !important;
     overflow: hidden;
     position: relative;
@@ -86,6 +86,5 @@ body {
 }
 
 .card-img-overlay:hover {
-    opacity: 0.2;
-    background-color:white;
+    
 }

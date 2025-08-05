@@ -55,7 +55,7 @@ body {
 
 /*listing page*/
 .card {
-    border: none !important;
+    border: none;
     border-radius: 1rem !important;
     overflow: hidden;
     position: relative;
@@ -76,16 +76,30 @@ body {
     font-weight: 400 !important;
 }
 
-.all-cards{
-    text-decoration: none !important;
+.listing-link {
+    text-decoration: none;
 }
 
 /* Card Effect */
 .card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     opacity: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 1rem;
 }
 
-.card-img-overlay:hover {
-    opacity: 0.2;
-    background-color:white;
+.card:hover .card-img-overlay {
+    opacity: 1;
+    cursor: pointer;
 }

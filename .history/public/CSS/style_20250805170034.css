@@ -55,7 +55,7 @@ body {
 
 /*listing page*/
 .card {
-    border: none !important;
+    border: none;
     border-radius: 1rem !important;
     overflow: hidden;
     position: relative;

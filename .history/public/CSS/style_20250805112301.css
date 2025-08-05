@@ -54,38 +54,22 @@ body {
 
 
 /*listing page*/
-.card {
-    border: none !important;
+
+.card{
+    border: none;
     border-radius: 1rem !important;
-    overflow: hidden;
-    position: relative;
 }
 
-.card-img-top {
+.card-img-top{
     border-radius: 1rem !important;
-    width: 100% !important;
+    width: 100% important;
     object-fit: cover !important;
-    height: 100%;
 }
 
-.card-body {
+.card-body{
     padding: 0 !important;
 }
 
-.card-text p {
+.card-text p{
     font-weight: 400 !important;
-}
-
-.all-cards{
-    text-decoration: none !important;
-}
-
-/* Card Effect */
-.card-img-overlay {
-    opacity: 0;
-}
-
-.card-img-overlay:hover {
-    opacity: 0.2;
-    background-color:white;
 }

@@ -9,14 +9,14 @@
 
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
     <% for (let listing of allListings) { %>
-      <a href="/listings/<%= listing._id %>" class="all-cards" >
+      <a href="/listings/<%= listing._id %>" class="all-cards" style="text-decoration:none">
         <div class="col mb-4">
           <div class="card h-100" style="width: 20rem;">
             <img src="<%= listing.image?.url %>" class="card-img-top" alt="listing image" style="height: 20rem;">
-            <div class="card-img-overlay"></div>
+            <div class="card-img-overlay">View Details</div>
             <div class="card-text">
               <p class="card-title"><b><%= listing.title %></b></p>
-              <p class="card-text1">₹ <%= listing.price %> / Night</p> 
+              <p class="card-text1">₹ <%= listing.price %></p>
             </div>
           </div>
         </div>
