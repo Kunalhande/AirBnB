@@ -98,7 +98,6 @@ app.delete("/listings/:id", async(req,res) =>{
 
 app.use((err,req,res,next) =>{
     console.log("-------------error---------")
-    next(err);
 })
 
 
