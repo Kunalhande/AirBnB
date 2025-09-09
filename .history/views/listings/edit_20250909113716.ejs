@@ -5,7 +5,7 @@
 
      <h1>Edit yours Listing</h1>
 
-<form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+<form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input name="listing[title]" value="<%= listing.title%>" type="text" class="form-control">
@@ -41,7 +41,9 @@
     </div>
 
 
-        <button type="submit" class="brn btn-dark edit-btn mt-3">Edit</button>
+        <button type="submit" class="brn btn-dark edit-btn">Edit</button>
+        <br><br>
     </form>
     </div>
 </div>
+<script src="/JS/script.js"></script>
