@@ -5,8 +5,7 @@ const Listing = require("./models/listing")
 const path = require("path");
 const method = require("method-override");
 const ejsMate = require("ejs-mate");
-const wrapAsync = require("./utils/wrapAsync");
-
+const wrapAsync = require("/utils/wrapAsync.js");
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -70,8 +69,8 @@ app.get("/listings/:id",async (req,res)=>{
 
 //Create Route
 app.post("/listings", 
-     //let {title,description, image, price, country, location} = req.body;
     wrapAsync(async (req,res) =>{
+    //let {title,description, image, price, country, location} = req.body;
         const newListing = new Listing(req.body.listing);
         await newListing.save();
         res.redirect("/listings");
