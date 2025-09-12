@@ -50,17 +50,6 @@ app.get("/", (req,res) =>{
     res.send("Hi, I am root");
 });
 
-const validateListing = (req,res,next) =>{
-     let {error} = listingSchema.validate(req.body);
-        
-        if(error) {
-            let errMsg =err.Details.map((el) =>el.msg).join(",");
-            throw new ExpressError(400, errMsg);
-        }else{
-            next();
-        }
-}
-
 
 //Index Route
 app.get("/listings", wrapAsync(async (req,res) => {
@@ -81,16 +70,18 @@ app.get("/listings/:id", wrapAsync(async (req,res)=>{
 }));  
 
 //Create Route
-app.post("/listings", 
-    validateListing,
-     //let {title,description, image, price, country, location} = req.body;
-    wrapAsync(async (req,res) =>{
-        const newListing = new Listing(req.body.listing);
-        await newListing.save();
-        res.redirect("/listings");
-    })
-    
-);
+// Create Route
+app.post("/listings", wrapAsync(async (req,res) => {
+    const { error } = listingSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",");
+        throw new ExpressError(400, msg);
+    }
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+}));
+
 
 
 //Edit Route
@@ -101,9 +92,10 @@ app.get("/listings/:id/edit", wrapAsync(async(req,res)=>{
 }))
 
 //Update
-app.put("/listings/:id",
-    validateListing,
-     wrapAsync(async(req,res) =>{
+app.put("/listings/:id", wrapAsync(async(req,res) =>{
+    if(!req.body.listing){
+            throw new ExpressError(400, "Send va;id data for listing");
+        }
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, {...req.body.listing});
     res.redirect(`/listings/${id}`);
