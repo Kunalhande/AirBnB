@@ -81,8 +81,7 @@ app.post("/listings",
     })
     
 );
-
-
+c
 //Edit Route
 app.get("/listings/:id/edit", wrapAsync(async(req,res)=>{
      let {id} = req.params;
