@@ -2,15 +2,16 @@
 
 <div class="row mt-3">
   <div class="col-8 offset-2">
-    <h1><%= listing.title %></h1>
+    <h1>listing.title</h1>
   </div>
 
   <div class="card col-6 offset-3 show-card">
     <img src="<%= listing.image?.url %>" class="card-img-top show-img" alt="image">
     <div class="card-body">
       <p class="card-text">
+        <b><%= listing.title %></b> <br>
         <%= listing.description %> <br>
-        ₹ <%= listing.price.toLocaleString("en-IN") %> <br>
+        ₹ <%= listing.price.toLocalString("en-IN")%> <br>
         <%= listing.location %> <br>
         <%= listing.country %>
       </p>
