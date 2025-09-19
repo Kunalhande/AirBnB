@@ -129,7 +129,8 @@ app.post("/listings/:id/reviews", async (req, res) => {
   await newReview.save();
   await listing.save();
 
-  res.redirect(`/listings/${listing._id}`);
+  console.log("new review saved");
+  res.send("new review saved");
 });
 
 

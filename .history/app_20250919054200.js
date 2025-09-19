@@ -8,7 +8,7 @@ const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
 const { listingSchema } =require("./schema.js");
-const Review = require("./models/review")
+const review = require("./models/review")
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -119,7 +119,6 @@ app.delete("/listings/:id", wrapAsync(async(req,res) =>{
 }));
 
 //reviews
-//post route
 app.post("/listings/:id/reviews", async (req, res) => {
   let listing = await Listing.findById(req.params.id); // Use model 'Listing'
   let newReview = new Review(req.body.review);         // Use model 'Review'
@@ -129,7 +128,8 @@ app.post("/listings/:id/reviews", async (req, res) => {
   await newReview.save();
   await listing.save();
 
-  res.redirect(`/listings/${listing._id}`);
+  console.log("new review saved");
+  res.send("new review saved");
 });
 
 
