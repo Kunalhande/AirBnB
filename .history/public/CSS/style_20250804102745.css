@@ -1,0 +1,46 @@
+/* body  { 
+    background-color: slategray;
+} */
+
+.navbar {
+    height: 5rem;
+    background-color:white;
+}
+
+.fa-solid{
+    color: aqua;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222  !important;
+}
+
+/*footer*/
+
+.f-info-links { 
+    text-decoration:none;
+    color:#222222;
+}
+
+.f-info-links:hover{
+    text-decoration: underline;
+}
+
+.f-info-links{
+    width: 100%;
+};
+
+.f-info-social{
+    width: 100%;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color:#ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
