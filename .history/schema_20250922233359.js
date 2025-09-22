@@ -1,4 +1,3 @@
-const Joi = require('joi');
 const joi = require('joi');
 
 module.exports.listingSchema =joi.object({
@@ -13,9 +12,9 @@ module.exports.listingSchema =joi.object({
     }).required()
 });
 
-module.exports.reviewSchema = Joi.object({
+module.exports.reviewSchema = joi.object({
     review: Joi.object({
-        rating:Joi.number().required().min(1).max(5),
+        rating:Joi.number().required(),
         comment: Joi.string().required(),
     }).required,
 })
