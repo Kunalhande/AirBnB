@@ -89,7 +89,7 @@ app.get("/listings/new", wrapAsync(async(req,res) => {
 //Show Route
 app.get("/listings/:id", wrapAsync(async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews"); 
+    const listing = await Listing.findById(id);
     res.render("listings/show",{listing});
 }));  
 
