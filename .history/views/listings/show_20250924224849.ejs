@@ -74,17 +74,10 @@
 
     <hr>
 
-  <p><b>All Reviews</b></p> 
-
+  <p><b>All Reviews</b></p>
+<ul>
   <% for (let review of listing.reviews) { %>
-    <div class="card">
-       <div class="card-body">
-         <h5 class="card-title"> kunal hande </h5>
-         <p class="card-text"><%= review.comment %></p>
-         <p class="card-text"><%= review.rating %></p>
-       </div>
-    </div>
-
+    <li><%= review.comment %>, <%= review.rating %> stars</li>
   <% } %>
 </ul>
 
