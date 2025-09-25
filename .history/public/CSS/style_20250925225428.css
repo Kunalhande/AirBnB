@@ -62,7 +62,7 @@ body {
 
 
 /*listing page*/
-.card {
+.listing-card {
     border: none !important;
     border-radius: 1rem !important;
     overflow: hidden;

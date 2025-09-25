@@ -7,7 +7,7 @@
     <button class="btn btn-success mb-3">Create New Listing</button>
   </form>
 
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 ">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 listing-card ">
     <% for (let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="all-cards" >
         <div class="col mb-4">
