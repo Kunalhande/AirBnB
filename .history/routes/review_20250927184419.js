@@ -19,6 +19,7 @@ const validateReview = (req, res, next) => {
 //reviews
 //post review-route
 router.post("/",validateReview, wrapAsync(async (req, res) => {
+    console.log(req.params.id);
   let listing = await Listing.findById(req.params.id); // Use model 'Listing'
   let newReview = new Review(req.body.review);         // Use model 'Review'
 

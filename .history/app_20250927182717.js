@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const Listing = require("./models/listing")
 const path = require("path");
 const method = require("method-override");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
+const { listingSchema, reviewSchema  } =require("./schema.js");
+const Review = require("./models/review");
 
 
 const listings = require("./routes/listing.js");

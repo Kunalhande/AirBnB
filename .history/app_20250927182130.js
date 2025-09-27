@@ -1,14 +1,18 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const Listing = require("./models/listing")
 const path = require("path");
 const method = require("method-override");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
+const { listingSchema, reviewSchema  } =require("./schema.js");
+const Review = require("./models/review");
 
 
 const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listings = require("./routes/review.js");
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/test";
@@ -50,6 +54,18 @@ app.use(express.static(path.join(__dirname,"/public")));
 app.get("/", (req,res) =>{
     res.send("Hi, I am root");
 });
+
+
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(",");
+    throw new ExpressError(400, msg);
+  } else {
+    next();
+  }
+};
 
 
 app.use("/listings", listings);

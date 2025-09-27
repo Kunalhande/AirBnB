@@ -1,5 +1,5 @@
 const express = require("express");
-const router= express.Router({ mergeParams: true});
+const router= express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 const { listingSchema, reviewSchema  } =require("../schema.js");
@@ -15,6 +15,7 @@ const validateReview = (req, res, next) => {
     next();
   }
 };
+
 
 //reviews
 //post review-route
