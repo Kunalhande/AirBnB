@@ -127,7 +127,7 @@ app.delete("/listings/:id", wrapAsync(async(req,res) =>{
     let {id} =req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
-    res.redirect("/listings");
+    res.redirect(err);
 }));
 
 //reviews

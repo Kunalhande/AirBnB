@@ -123,11 +123,11 @@ app.put("/listings/:id",
 }));
 
 //Delete Route
-app.delete("/listings/:id", wrapAsync(async(req,res) =>{
+app.delete("/listings/:id", wrapAsync(async(req,res,err) =>{
     let {id} =req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
-    res.redirect("/listings");
+    res.redirect(err);
 }));
 
 //reviews
