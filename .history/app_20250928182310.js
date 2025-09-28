@@ -6,7 +6,6 @@ const method = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
-const flash = require("connect-flash");
 
 
 const listings = require("./routes/listing.js");
@@ -59,17 +58,12 @@ const sessionOption = {
     }
 };
 
+app.use(session(sessionOption));
+
 app.get("/", (req,res) =>{
     res.send("Hi, I am root");
 });
 
-app.use(session(sessionOption));
-app.use(flash());
-
-app.use((req,res,next) =>{
-    res.locals.success = req.flash("success");
-    next();
-});
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews)
