@@ -68,10 +68,6 @@ router.put("/:id",
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, {...req.body.listing});
     req.flash("success", "listing Updated !");
-     if(!listing){
-        req.flash("error", "Listing you requested for does not exist !");
-        res.redirect("/listings")
-    }
     res.redirect(`/listings/${id}`);
 }));
 
