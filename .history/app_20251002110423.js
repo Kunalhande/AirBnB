@@ -69,7 +69,7 @@ app.get("/", (req,res) =>{
 app.use(session(sessionOption));
 app.use(flash());
 
-app.use(passport.initialize());
+app.use(passport.initialize);
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
@@ -82,15 +82,14 @@ app.use((req,res,next) =>{
     next();
 });
 
-app.get("/demouser", async(req,res) =>{
+app.get("/demo", async(req,res) =>{
     let fakeUser = new User ({
         email:"student@gmail.com",
         username:"random-one",
-    });
-
+    })
    let registeredUser = await  User.register(fakeUser, "halloword");
    res.send(registeredUser);
-});
+})
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews)
