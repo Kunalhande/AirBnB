@@ -4,11 +4,9 @@ const wrapAsync = require("../utils/wrapAsync");
 const { listingSchema, reviewSchema  } =require("../schema.js");
 const ExpressError = require("../utils/ExpressError");
 const Listing = require("../models/listing");
-const isLoggedIn = require("../middleware.js");
+const { isLoggedIn } = require("../middleware.js");
 
-// console.log("wrapAsync:", wrapAsync);
-// console.log("isLoggedIn:", isLoggedIn);
-// console.log("Listing:", Listing);
+
 
 
 const validateListing = (req, res, next) => {
@@ -22,7 +20,6 @@ const validateListing = (req, res, next) => {
 };
 
 
-
 //Index Route
 router.get("/", wrapAsync(async (req,res) => {
     const allListings = await Listing.find({});
@@ -30,9 +27,9 @@ router.get("/", wrapAsync(async (req,res) => {
     }));
     
 // New Route put this BEFORE the show route
-router.get("/new", isLoggedIn, wrapAsync(async(req,res) => {
+router.get("/new",isLoggedIn, (req,res) => {
     res.render("listings/new.ejs");
-}));
+});
 
 //Show Route
 router.get("/:id", wrapAsync(async (req,res)=>{
