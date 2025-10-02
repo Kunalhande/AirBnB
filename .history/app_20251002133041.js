@@ -83,15 +83,15 @@ app.use((req,res,next) =>{
     next();
 });
 
-// app.get("/demouser", async(req,res) =>{
-//     let fakeUser = new User ({
-//         email:"student@gmail.com",
-//         username:"random-one",
-//     });
+app.get("/demouser", async(req,res) =>{
+    let fakeUser = new User ({
+        email:"student@gmail.com",
+        username:"random-one",
+    });
 
-//    let registeredUser = await  User.register(fakeUser, "halloword");
-//    res.send(registeredUser);
-// });
+   let registeredUser = await  User.register(fakeUser, "halloword");
+   res.send(registeredUser);
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
