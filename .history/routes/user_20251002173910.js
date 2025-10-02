@@ -28,8 +28,7 @@ router.get("/login", (req,res) =>{
 });
 
 router.post("/login", passport.authenticate("local",{ failureRedirect: `/login`, failureFlash: true }), async(req,res)=>{
-    req.flash("success","Welcome back to Herapheri !");
-    res.redirect("/listings");
+    res.send("Welcome to Herapheri ! You are logged in.")
 })
 
 
