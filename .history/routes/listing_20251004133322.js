@@ -63,7 +63,7 @@ router.post("/",isLoggedIn,
 
 
 //Edit Route
-router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(async(req,res)=>{
+router.get("/:id/edit",isLoggedIn, wrapAsync(async(req,res)=>{
      let {id} = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit",{listing})
@@ -82,7 +82,7 @@ router.put("/:id",
 }));
 
 //Delete Route
-router.delete("/:id",isLoggedIn,isOwner, wrapAsync(async(req,res) =>{
+router.delete("/:id",isLoggedIn, wrapAsync(async(req,res) =>{
     let {id} =req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);

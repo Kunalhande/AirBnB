@@ -19,36 +19,17 @@ module.exports.saveRedirectUrl = (req,res,next) => {
     }
     next();
 }
-module.exports.isOwner = async (req, res, next) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id); // ⚡ no shadowing
-    if (!listing) {
-        req.flash("error", "Listing not found.");
-        return res.redirect("/listings");
-    }
 
-    if (!req.user || !listing.owner.equals(req.user._id)) {
+module.exports.isOwner = async(req,res,next) =>{
+    let {id} = req.params;
+    let Listing = await Listing.findById(id);
+    if(currUser && !Listing.owner.equals(res.locals.currUser._id)){
         req.flash("error", "You are not the owner of the listing.");
-        return res.redirect(`/listings/${id}`);
+        return res.redirect(`/listings/${id}`)
     }
-
     next();
-};
-
-
-
-module.exports.validateListing = (req, res, next) => {
+};module.exports.validateListing = (req, res, next) => {
   const { error } = listingSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(",");
-    throw new ExpressError(400, msg);
-  } else {
-    next();
-  }
-};
-
-module.exports.validateReview = (req, res, next) => {
-  const { error } = reviewSchema.validate(req.body);
   if (error) {
     const msg = error.details.map(el => el.message).join(",");
     throw new ExpressError(400, msg);
