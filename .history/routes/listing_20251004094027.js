@@ -52,7 +52,6 @@ router.post("/",isLoggedIn,
      //let {title,description, image, price, country, location} = req.body;
     wrapAsync(async (req,res) =>{
         const newListing = new Listing(req.body.listing);
-        newListing.owner = req.user._id;
         await newListing.save();
         req.flash("success", "New listing created !");
         res.redirect("/listings");

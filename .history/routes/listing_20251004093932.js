@@ -42,7 +42,6 @@ router.get("/:id", wrapAsync(async (req,res)=>{
         req.flash("error", "Listing you requested for does not exist !");
         res.redirect("/listings")
     }
-    console.log(listing);
     res.render("listings/show",{listing});
 }));  
 
@@ -52,7 +51,6 @@ router.post("/",isLoggedIn,
      //let {title,description, image, price, country, location} = req.body;
     wrapAsync(async (req,res) =>{
         const newListing = new Listing(req.body.listing);
-        newListing.owner = req.user._id;
         await newListing.save();
         req.flash("success", "New listing created !");
         res.redirect("/listings");

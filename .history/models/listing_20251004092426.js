@@ -22,9 +22,8 @@ const listingSchema = new mongoose.Schema({
     }
   ],
   owner:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",   // ✅ make sure it's `User`
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
