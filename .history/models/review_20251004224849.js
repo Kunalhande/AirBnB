@@ -12,7 +12,7 @@ const reviewSchema = new Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "User"  
+    ref: "User"  // 👈 THIS is the missing piece
   }
 });
 

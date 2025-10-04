@@ -26,10 +26,10 @@ router.get("/new", isLoggedIn, wrapAsync(async(req,res) => {
 //Show Route
 router.get("/:id", wrapAsync(async (req,res)=>{
     let {id} = req.params;
-   const listing = await Listing.findById(id)
+    const listing = await Listing.findById(id)
   .populate({
     path: "reviews",
-    populate: { path: "author", strictPopulate: false }
+    populate: { path: "author", model: "User" }
   })
   .populate("owner");
 
