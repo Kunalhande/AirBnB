@@ -22,6 +22,7 @@ router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
 
 //Show Route
 router.get("/:id", wrapAsync(listingController.showListing)); 
+console.log(listingController.showListing); 
 
 //Create Route
 router.post("/",isLoggedIn, 

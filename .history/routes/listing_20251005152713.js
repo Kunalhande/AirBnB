@@ -21,13 +21,15 @@ router.get("/", wrapAsync(listingController.index));
 router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
 
 //Show Route
-router.get("/:id", wrapAsync(listingController.showListing)); 
+router.get("/:id", wrapAsync(listingController.showListing));  
 
 //Create Route
 router.post("/",isLoggedIn, 
     validateListing,
      //let {title,description, image, price, country, location} = req.body;
-    wrapAsync(listingController.createListing));
+    wrapAsync(listingController.createListing)
+    
+);
 
 
 //Edit Route
@@ -38,9 +40,20 @@ router.put("/:id",
     isLoggedIn,
     isOwner,
     validateListing,
-    wrapAsync(listingController.updateListing));
+    wrapAsync(async(req,res) =>{
+    let {id} = req.params;
+    await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    req.flash("success", "listing Updated !");
+    res.redirect(`/listings/${id}`);
+}));
 
 //Delete Route
-router.delete("/:id",isLoggedIn,isOwner, wrapAsync(listingController.deleteListing));
+router.delete("/:id",isLoggedIn,isOwner, wrapAsync(async(req,res) =>{
+    let {id} =req.params;
+    let deletedListing = await Listing.findByIdAndDelete(id);
+    console.log(deletedListing);
+    req.flash("success", "listing Deleted !");
+    res.redirect("/listings");
+}));
 
 module.exports = router;
