@@ -18,33 +18,39 @@ router
 .post(isLoggedIn, 
     validateListing,
      //let {title,description, image, price, country, location} = req.body;
-    wrapAsync(listingController.createListing)
-);
+    wrapAsync(listingController.createListing));
 
+
+
+//Index Route
+router.get("/", wrapAsync(listingController.index));
+    
 // New Route put this BEFORE the show route
 router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
 
 
-//Show Route,Update,Delete Route
-router.
-route("/:id")
-.get(wrapAsync(listingController.showListing))
-.put(isLoggedIn,
-    isOwner,
-    validateListing,
-    wrapAsync(listingController.updateListing)
-)
-.delete(isLoggedIn,
-    isOwner, 
-    wrapAsync(listingController.deleteListing)
-);
-
-
 //Edit Route
-router.get("/:id/edit",
+router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.renderEditForm));
+
+//Show Route
+router.get("/:id", wrapAsync(listingController.showListing)); 
+
+//Create Route
+router.post("/",isLoggedIn, 
+    validateListing,
+     //let {title,description, image, price, country, location} = req.body;
+    wrapAsync(listingController.createListing));
+
+
+//Update
+router.put("/:id",
     isLoggedIn,
     isOwner,
-    wrapAsync(listingController.renderEditForm));
+    validateListing,
+    wrapAsync(listingController.updateListing));
+
+//Delete Route
+router.delete("/:id",isLoggedIn,isOwner, wrapAsync(listingController.deleteListing));
 
 module.exports = router;
  

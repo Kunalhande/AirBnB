@@ -18,9 +18,13 @@ router.route("/login")
 .post(saveRedirectUrl,
      passport.authenticate("local",
         { failureRedirect: `/login`, failureFlash: true }),
-         userController.loginForm
-        
-);        
+         userController.loginForm);
+
+
+
+router.get("/login",userController.renderLoginForm);
+
+router.post("/login",saveRedirectUrl, passport.authenticate("local",{ failureRedirect: `/login`, failureFlash: true }), userController.loginForm);
 
 router.get("/logout", userController.logout )
 

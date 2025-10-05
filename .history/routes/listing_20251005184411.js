@@ -21,30 +21,30 @@ router
     wrapAsync(listingController.createListing)
 );
 
-// New Route put this BEFORE the show route
-router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
-
 
 //Show Route,Update,Delete Route
 router.
 route("/:id")
-.get(wrapAsync(listingController.showListing))
-.put(isLoggedIn,
+.get("/:id",
+     wrapAsync(listingController.showListing))
+.put("/:id",
+    isLoggedIn,
     isOwner,
     validateListing,
     wrapAsync(listingController.updateListing)
 )
-.delete(isLoggedIn,
+.delete("/:id",
+    isLoggedIn,
     isOwner, 
     wrapAsync(listingController.deleteListing)
 );
 
+// New Route put this BEFORE the show route
+router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
+
 
 //Edit Route
-router.get("/:id/edit",
-    isLoggedIn,
-    isOwner,
-    wrapAsync(listingController.renderEditForm));
+router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.renderEditForm));
 
 module.exports = router;
  

@@ -8,19 +8,13 @@ const { isLoggedIn, isOwner, validateListing, validateReview,saveRedirectUrl } =
 const userController = require("../controllers/users.js");
 
 
-router.route("/signup")
-.get(userController.renderSignupForm)
-.post(wrapAsync(userController.signupForm)
-);
+router.get("/signup",userController.renderSignupForm);
 
-router.route("/login")
-.get(userController.renderLoginForm)
-.post(saveRedirectUrl,
-     passport.authenticate("local",
-        { failureRedirect: `/login`, failureFlash: true }),
-         userController.loginForm
-        
-);        
+router.post("/signup" , wrapAsync(userController.signupForm));
+
+router.get("/login",userController.renderLoginForm);
+
+router.post("/login",saveRedirectUrl, passport.authenticate("local",{ failureRedirect: `/login`, failureFlash: true }), userController.loginForm);
 
 router.get("/logout", userController.logout )
 

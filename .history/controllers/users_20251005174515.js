@@ -28,7 +28,7 @@ module.exports.renderLoginForm =  (req,res) =>{
     res.render("users/login.ejs")
 };
 
-module.exports.loginForm = async(req,res)=>{
+module.exports.login = async(req,res)=>{
     req.flash("success","Welcome back to Herapheri !");
     let redirectUrl = res.locals.redirectUrl || "/listings"
     res.redirect(redirectUrl);
