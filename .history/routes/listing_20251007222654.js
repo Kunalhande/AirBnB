@@ -3,8 +3,8 @@ const router= express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const Listing = require("../models/listing");
 const { isLoggedIn, isOwner, validateListing, validateReview} = require("../middleware.js");
-const multer = require('multer');
-const upload = multer({ dest:'uploads'});
+const multer = require("multer");
+
 
 const  listingController = require("../controllers/listing.js")
 
@@ -17,15 +17,11 @@ const  listingController = require("../controllers/listing.js")
 router
 .route("/")
 .get(wrapAsync(listingController.index))
-// .post(isLoggedIn, 
-//     validateListing,
-//      //let {title,description, image, price, country, location} = req.body;
-//     wrapAsync(listingController.createListing)
-// );
-.post(upload.single("listing[image]"), (req,res) => {
-    res.send(req.file);
-});
-
+.post(isLoggedIn, 
+    validateListing,
+     //let {title,description, image, price, country, location} = req.body;
+    wrapAsync(listingController.createListing)
+);
 
 // New Route put this BEFORE the show route
 router.get("/new", isLoggedIn, wrapAsync(listingController.renderNewForm));
