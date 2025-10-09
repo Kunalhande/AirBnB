@@ -19,12 +19,13 @@ router
 .route("/")
 .get(wrapAsync(listingController.index))
 .post(isLoggedIn, 
-    
-    upload.single("listing[image]"),
     validateListing,
      //let {title,description, image, price, country, location} = req.body;
     wrapAsync(listingController.createListing)
 )
+.post(upload.single("listing[image]"), (req,res) => {
+    res.send(req.file);
+});
 
 
 // New Route put this BEFORE the show route
