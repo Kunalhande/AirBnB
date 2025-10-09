@@ -10,6 +10,11 @@ const upload = multer({ storage });
 const  listingController = require("../controllers/listing.js")
 
 
+
+// console.log("wrapAsync:", wrapAsync);
+// console.log("isLoggedIn:", isLoggedIn);
+// console.log("Listing:", Listing);  
+
 router
 .route("/")
 .get(wrapAsync(listingController.index))
