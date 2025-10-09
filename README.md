@@ -1,7 +1,7 @@
 🏠 Herapheri – MERN Stack Web Application
 
 🚀 Overview
-Herapheri is a full-stack web application designed to simplify the process of listing, exploring, and managing properties.
+Herapheri is a fullstack web application designed to simplify the process of listing, exploring, and managing properties.
 Users can create, edit, and review listings with secure authentication, image uploads, and interactive UI features — all powered by the MERN (MongoDB, Express, React, Node.js) stack.
 
 ✨ Features
