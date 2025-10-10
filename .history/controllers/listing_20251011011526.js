@@ -41,16 +41,14 @@ module.exports.createListing = async (req,res) =>{
         res.redirect("/listings");
 };
 
-module.exports.renderEditForm = async (req, res) => {
-    let { id } = req.params;
+module.exports.renderEditForm = async(req,res)=>{
+     let {id} = req.params;
     const listing = await Listing.findById(id);
 
     let originalImage = listing.image.url;
-    let originalImageUrl = originalImage.replace("/upload", "/upload/w_250");
-
-    res.render("listings/edit", { listing, originalImageUrl });
+    originalImageUrl.replace("/upload","/upload/h_300,w_250");
+    res.render("listings/edit",{listing})
 };
-
 
 module.exports.updateListing = async(req,res) =>{
     let {id} = req.params;

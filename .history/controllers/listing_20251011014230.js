@@ -46,7 +46,7 @@ module.exports.renderEditForm = async (req, res) => {
     const listing = await Listing.findById(id);
 
     let originalImage = listing.image.url;
-    let originalImageUrl = originalImage.replace("/upload", "/upload/w_250");
+    let originalImageUrl = originalImage.replace("/upload", "/upload/h_300,w_250");
 
     res.render("listings/edit", { listing, originalImageUrl });
 };
