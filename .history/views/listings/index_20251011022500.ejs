@@ -2,15 +2,15 @@
 <body>
 
   <style>
-    
+    .filter{
+      margin-top: 1rem;
+    }
   </style>
- <div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
-</div>
+  <div id="filters">
+    <div class="filter">
 
+    </div>
+  </div>
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3">
     <% for (let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="all-cards" >

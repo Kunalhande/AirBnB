@@ -1,17 +1,12 @@
 <%- layout("layouts/boilerplate") %>
 <body>
+  <!-- <b><h1>🏡 All Listings</h1></b>
 
-  <style>
-    
-  </style>
- <div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
-</div>
+  <form method="GET" action="/listings/new">
+    <button class="btn btn-success mb-3">Create New Listing</button>
+  </form> -->
 
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 ">
     <% for (let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="all-cards" >
         <div class="col mb-4">
