@@ -26,10 +26,6 @@
       font-size: 0.8rem;
     }
 
-    .tax-info{
-      display: none;
-    }
-
 
   </style>
 
@@ -86,7 +82,7 @@
             <div class="card-text">
               <p class="card-title"><b><%= listing.title %></b></p>
               <p class="card-text1">₹ <%= listing.price.toLocaleString("en-IN") %> / Night</p>
-              <i id="tax-info">+18% GST</i>
+              <i tax-info>+18% GST</i>
               
             </div>
           </div>
